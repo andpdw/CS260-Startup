@@ -8,9 +8,9 @@ This application allows access to a camera facing the front door of our apt. It 
 ## 🚀 Specification Deliverable
 
 - [x] Input elevator pitch
-- [ ] Made design
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Made design
+- [x] Description of key features
+- [x] Description of how you will use each technology
 - [ ] Made the rough design image
 
 ### Elevator pitch
@@ -34,20 +34,22 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- View live video from camera
+- Table of who is in the apt and if not when they left
+- A chat feature between those online
+- Storing of who entered and exited and when
+
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Used to make the structure of the website, 2 web pages, a home page and a "settings" page
+- **CSS** - Used to style the data so that it will be displayed in a good way, moving photos or videos to fit as needed
+- **React** - Used to help users login as well as helping display the photos and videos and tables of data
+- **Service** - Used to help with loginging as well as storing messages sent, and saving who data from the camera
+- **DB/Login** - Database of who entered and when as well as unknown users
+- **WebSocket** - Chat services as well as any data updates for who is in the apartment, so that it can be live
 
 ## 🚀 AWS deliverable
 

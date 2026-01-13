@@ -19,7 +19,7 @@ Do you ever with that you could see when your roomates were in the apartment but
 
 ### Design
 
-![Design image](Website Demo-1.jpg)
+![Design image](WebsiteDemo-1.jpg)
 
 The homescreen will have the live video feed, a table of who is currently in the apartment, a photo of who entered most recently, as well as an area to chat with anyone else online. 
 

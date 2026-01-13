@@ -21,13 +21,15 @@ Do you ever with that you could see when your roomates were in the apartment but
 
 ![Design image](placeholder.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The homescreen will have the live video feed, a table of who is currently in the apartment, a photo of who entered most recently, as well as an area to chat with anyone else online. 
 
 ```mermaid
 sequenceDiagram
     actor You
+    actor Camera
     actor Website
-    You->>Website: Replace this with your design
+    You->>Website: Accessing the info on the website
+    Camera->>Website: Provides the website with the data to display
 ```
 
 ### Key features

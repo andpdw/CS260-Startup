@@ -11,7 +11,7 @@ This application allows access to a camera facing the front door of our apt. It 
 - [x] Made design
 - [x] Description of key features
 - [x] Description of how you will use each technology
-- [ ] Made the rough design image
+- [x] Made the rough design image
 
 ### Elevator pitch
 
@@ -19,7 +19,7 @@ Do you ever with that you could see when your roomates were in the apartment but
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image](Website Demo-1.jpg)
 
 The homescreen will have the live video feed, a table of who is currently in the apartment, a photo of who entered most recently, as well as an area to chat with anyone else online. 
 

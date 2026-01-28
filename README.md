@@ -44,7 +44,7 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Used to make the structure of the website, 2 web pages, a home page and a "settings" page
+- **HTML** - Make the basic webpages
 - **CSS** - Used to style the data so that it will be displayed in a good way, moving photos or videos to fit as needed
 - **React** - Used to help users login as well as helping display the photos and videos and tables of data
 - **Service** - Used to help with loginging as well as storing messages sent, and saving who data from the camera
@@ -55,21 +55,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I made the basic pages for index.html, camera.html, database.html, message.html
+- [x] **Proper HTML element usage** - Set up the header and footer that was used for each page
+- [x] **Links** - I put in links to the different pages as well as added some buttons that link between pages
+- [x] **Text** - I put some text in for different things like the message page as well as the database
+- [x] **3rd party API placeholder** - I put a table at the bottom to show the weather info
+- [x] **Images** - I added a video that will be the live camera feed
+- [x] **Login placeholder** - I set up the login page in the index.html page
+- [x] **DB data placeholder** - I made the database.html page that will track when people enter and exit
+- [x] **WebSocket placeholder** - I got a page set up so that people will be able to messag eachother
 
 ## 🚀 CSS deliverable
 

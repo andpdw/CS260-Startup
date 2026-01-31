@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+}
+
+header {
+    margin: 0;
+}
+
+.logo {
+    color: #066839;
+    margin: 0px;
+}
+
+nav {
+    padding-left: 10px;
+    padding-right: 3px;
+    display: flex;
+    align-items: center;
+    background-color: #0d0e14;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+nav li {
+    margin-right: 5px;
+}
+
+nav a {
+    display: block;
+    padding: 5px 10px;
+    background-color: #444;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    transition: color 0.3s ease, transform 0.15s ease;
+}
+
+a:hover {
+    background-color: #14452f;
+    color: black;
+}
+
+

@@ -51,8 +51,8 @@ nav a {
 }
 
 .nav-bar:hover {
-    background-color: #D75F41;
-    color: black;
+    background-color: #C74F31;
+    color: #3A1F04
 }
 
 footer {
@@ -90,7 +90,7 @@ footer div {
     border-radius: 5px;
     color: white;
     text-decoration: none;
-    transition: all 0.1s ease, transform 0.1s ease;
+    transition: all 0.2s ease, transform 0.1s ease;
 }
 
 .github-button:hover {

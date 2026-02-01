@@ -5,6 +5,7 @@
         <title>N106 Roomates</title>
 
         <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="login.css" />
     </head>
 
     <body>
@@ -21,21 +22,26 @@
         </header>
 
         <main>
-            <h3>Enter Login Info Below</h3>
-            <form method="get" action="database.html">
-                <h9>Username: </h9>
-                <input type="text" placeholder="username" />
-                <p></p>
-                <h9>Password: </h9>
-                <input type="text" placeholder="password" />
-                <p></p>
-                <button type="submit">Login</button>
-            </form>
+            <div class="login-box">
+                <h2>Login</h2>
 
-            <form method="get" action="message.html">
-                <h3>Click the button below to chat with Andrew to get an account</h3>
-                <button type="submit">Message</button>
-            </form>
+                <form class="login-form" method="get" id="login" action="database.html">
+                    <div>
+                        <span class="login-titles">Username: </span>
+                        <span class="login-titles">Password: </span>
+                    </div>
+                    <div>
+                        <input class="login-inputs" type="text" placeholder="username" />
+                        <input class="login-inputs" type="text" placeholder="password" />
+                    </div>
+                </form>
+                <button class="login-button" id="login" type="submit">Login</button>
+
+                <form method="get" action="message.html">
+                    <h3>Click the button below to chat with Andrew to get an account</h3>
+                    <button type="submit">Message</button>
+                </form>
+            </div>
         </main>
 
         <footer>

@@ -25,20 +25,24 @@
             <div class="login-box">
                 <h2>Login</h2>
 
-                <form class="login-form" method="get" id="login" action="database.html">
-                    <div>
-                        <span class="login-titles">Username: </span>
-                        <span class="login-titles">Password: </span>
+                <form class="login-form" method="get" action="database.html">
+                    <div class="login-inputs-div">
+                        <div class="login-input-row">
+                            <span class="login-titles">Username:</span>
+                            <input class="login-inputs" type="text" placeholder="username" />
+                        </div>
+                        <div class="login-input-row">
+                            <span class="login-titles">Password:</span>
+                            <input class="login-inputs" type="password" placeholder="password" />
+                        </div>
                     </div>
                     <div>
-                        <input class="login-inputs" type="text" placeholder="username" />
-                        <input class="login-inputs" type="text" placeholder="password" />
+                        <button class="login-button" type="submit">Login</button>
                     </div>
                 </form>
-                <button class="login-button" id="login" type="submit">Login</button>
 
-                <form method="get" action="message.html">
-                    <h3>Click the button below to chat with Andrew to get an account</h3>
+                <form class="message-form" method="get" action="message.html">
+                    <p>Click the button below to chat with Andrew to get an account</p>
                     <button type="submit">Message</button>
                 </form>
             </div>

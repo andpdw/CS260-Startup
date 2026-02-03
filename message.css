@@ -1,6 +1,8 @@
 main {
     display: flex;
     align-items: center;
+    height: 100%;
+    min-height: 0;
 }
 
 .messages-title h1 {
@@ -14,37 +16,53 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    overflow-y: auto;
     background-color: #2D262A;
     height: 60%;
     width: 75%;
+    min-width: 300px;
+    min-height: 300px;
     padding: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.message {
+.other-message {
     display: flex;
+    flex-direction: row;
     height: auto;
     width: 100%;
     margin-bottom: 10px;
 }
 
 .username {
-    width: 10%;
+    width: 60px;
     display: flex;
     justify-content: flex-end;
     color: white;
-    margin-right: 5px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.own-name {
+    width: 5%;
+    display: flex;
+    color: white;
+    margin-left: 10px;
 }
 
 .own-message {
-    width: 10%;
+    width: 100%;
     display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
     color: white;
-    margin-right: 5px;
+    margin-bottom: 10px;
 }
 
 .message-text {
+    color: black;
     width: 100%;
     height: 100%;
 }
@@ -64,7 +82,7 @@ main {
     background-color: #2D262A;
     width: 75%;
     min-height: 30px;
-    min-width: 400px;
+    min-width: 300px;
     padding: 10px;
     padding-top: 0;
     border-bottom-left-radius: 10px;
@@ -72,8 +90,7 @@ main {
 }
 
 #message-input {
-    flex: 0 100 auto;
-    flex-grow: 100;
+    flex: 1 0 auto;
 }
 
 #message-input textarea {

@@ -4,6 +4,8 @@ body {
     background-color: #626061;
     display: flex;
     flex-direction: column;
+    min-width: 425px;
+    min-height: 475px;
 }
 
 header {
@@ -102,4 +104,19 @@ footer div {
     text-align: left;
     padding-right: 10px;
     color: #CBCBCB;
+}
+
+@media (max-height: 575px) {
+  footer {
+    display: none;
+  }
+  main {
+    flex: 1 100vh;
+  }
+}
+
+@media (max-height: 525px) {
+    header {
+        display: none;
+    }
 }

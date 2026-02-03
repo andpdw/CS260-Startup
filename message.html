@@ -3,7 +3,8 @@
     <head>
         <title>N106 Roomates</title>
 
-        <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="main.css"/>
+        <link rel="stylesheet" href="message.css"/>
     </head>
 
     <body>
@@ -20,39 +21,39 @@
         </header>
 
         <main>
-            <table>
-                <tr>
-                    <th>Messages</th>
-                </tr>
-                <tr>
-                    <th>Andrew:</th>
-                    <td>When is everyone getting back?</td>
-                </tr>
-                <tr>
-                    <th>Carter:</th>
-                    <td>Never</td>
-                </tr>
-                <tr>
-                    <th>Clayton:</th>
-                    <td>I can't login</td>
-                </tr>
-            </table>
-            <p>Message: <input type="text" placeholder="text"></p>
+            <div class="messages-title">
+                <h1>Messages</h1>
+            </div>
+            <div class="message-board">
+
+            </div>
+            <div class="message-box">
+                <div id="username">
+                    <span>Andrew: </span>
+                </div>
+                <div id="message-input">
+                    <textarea class="text-input" placeholder="Type message here"></textarea>
+                </div>
+                <div id="send-button">
+                    <button type="button">Send Button</button>
+                </div>
+            </div>
         </main>
 
         <footer>
-            <hr />
-            <table>
-                <tr>
-                    <th>Andrew Harding</th>
-                    <td>Current Temp: 70 F</td>
-                    <td>Change of Rain: 50%</td>
-                </tr>
-                <tr>
-                    <th><a href="https://github.com/andpdw/CS260-Startup">GitHub</a></th>
-                </tr>
-            </table>
-            
+            <div class="footer-left">
+                <span class="footer-top">Current Temp: 50F</span>
+                <span>Chance of Rain: 50%</span>
+            </div>
+            <div class="footer-right">
+                <div class="made-by">
+                    <span class="footer-top">Made By:</span>
+                    <span>Andrew Harding</span>
+                </div>
+                <div>
+                    <a class="github-button" href="https://github.com/andpdw/CS260-Startup">GitHub</a>
+                </div>
+            </div>
         </footer>
         
     </body>

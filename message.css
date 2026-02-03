@@ -1,0 +1,65 @@
+main {
+    display: flex;
+    align-items: center;
+}
+
+.messages-title h1 {
+    background-color: #2D262A;
+    color: #A00841;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.message-board {
+    display: flex;
+    background-color: black;
+}
+
+.message-box {
+    display: flex;
+    flex-direction: row;
+    background-color: #2D262A;
+    width: 75%;
+    min-height: 30px;
+    min-width: 400px;
+    padding: 10px;
+    padding-top: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#username {
+    flex: 0 0 auto;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+#message-input {
+    flex: 0 100 auto;
+    flex-grow: 100;
+}
+
+#message-input textarea {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    background-color: #1b181a;
+    color: white;
+    border: none;
+    overflow: auto;
+}
+
+#send-button {
+    flex: 0 0 auto;
+    height: 100%;
+}
+
+#send-button button {
+    height: 100%;
+    border: 0px;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+}

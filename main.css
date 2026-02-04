@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'StarShield';
+    src: url('star-shield-2-font/StarShieldV2-9M52K.ttf') format('truetype');
+}
+
 body {
     margin: 0;
     height: 100vh;
@@ -6,6 +11,8 @@ body {
     flex-direction: column;
     min-width: 425px;
     min-height: 475px;
+    font-family: 'StarShield', sans-serif;
+    letter-spacing: 2px;
 }
 
 header {
@@ -52,7 +59,7 @@ nav a {
 }
 
 .nav-bar:hover {
-    background-color: #C74F31;
+    background-color: #A00841;
     color: #3A1F04
 }
 

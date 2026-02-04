@@ -45,7 +45,7 @@ sequenceDiagram
 I am going to use the required technologies in the following ways.
 
 - **HTML** - Make the basic webpages
-- **CSS** - Used to style the data so that it will be displayed in a good way, moving photos or videos to fit as needed
+- **CSS** - Styled the page, set a color scheme, and made it look nice.
 - **React** - Used to help users login as well as helping display the photos and videos and tables of data
 - **Service** - Used to help with loginging as well as storing messages sent, and saving who data from the camera
 - **DB/Login** - Database of who entered and when as well as unknown users
@@ -75,12 +75,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
-- [ ] **Use of a CSS framework** - I did not complete this part of the deliverable.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
-- [ ] **Use of a imported font** - I did not complete this part of the deliverable.
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [x] **Visually appealing colors and layout. No overflowing elements.** - Used a flex layout and set scaling for most things
+- [x] **Use of a CSS framework** - Used bootstrap for database.html for the table
+- [x] **All visual elements styled using CSS** - Done
+- [x] **Responsive to window resizing using flexbox and/or grid display** - The window scales and set min size for things that needed it
+- [x] **Use of a imported font** - Used the Star-shield-2 font
+- [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did this
 
 ## 🚀 React part 1: Routing deliverable
 

@@ -19,7 +19,10 @@ main {
 
 .table-title h3 {
     margin-top: 30px;
-    color: white;
+    color: #A00841;
+    background-color: #2D262A;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .data-table-div {
@@ -50,7 +53,7 @@ main {
 }
 
 #log-in-title {
-    color: white;
+    color: #A00841;
     text-align: center;
     padding-top: 10px;
 }

@@ -4,6 +4,7 @@
         <title>N106 Roomates</title>
 
         <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="camera.css" />
     </head>
 
     <body>
@@ -20,23 +21,28 @@
         </header>
 
         <main>
-            <h2>Live Feed</h2>
-            <video src="motionImage37.mp4" controls></video>
+            <div class="video-title">
+                <h2>Live Feed</h2>
+            </div>
+            <div class="video">
+                <video src="motionImage37.mp4" controls></video>
+            </div>
         </main>
 
         <footer>
-            <hr />
-            <table>
-                <tr>
-                    <th>Andrew Harding</th>
-                    <td>Current Temp: 70 F</td>
-                    <td>Change of Rain: 50%</td>
-                </tr>
-                <tr>
-                    <th><a href="https://github.com/andpdw/CS260-Startup">GitHub</a></th>
-                </tr>
-            </table>
-            
+            <div class="footer-left">
+                <span class="footer-top">Current Temp: 50F</span>
+                <span>Chance of Rain: 50%</span>
+            </div>
+            <div class="footer-right">
+                <div class="made-by">
+                    <span class="footer-top">Made By:</span>
+                    <span>Andrew Harding</span>
+                </div>
+                <div>
+                    <a class="github-button" href="https://github.com/andpdw/CS260-Startup">GitHub</a>
+                </div>
+            </div>
         </footer>
         
     </body>

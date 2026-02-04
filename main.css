@@ -110,13 +110,10 @@ footer div {
   footer {
     display: none;
   }
+  header {
+        display: none;
+    }
   main {
     flex: 1 100vh;
   }
-}
-
-@media (max-height: 525px) {
-    header {
-        display: none;
-    }
 }

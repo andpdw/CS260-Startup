@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>N106 Roomates</title>
+
+        <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="login.css" />
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <h1 class="logo">N106</h1>
+                <ul>
+                    <li><a class="nav-bar" href="index.html">Home</a></li>
+                    <li><a class="nav-bar" href="message.html">Message Page</a></li>
+                    <li><a class="nav-bar" href="database.html">Entry Database</a></li>
+                    <li><a class="nav-bar" href="camera.html">Live Camera</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="login-box">
+                <h2>Login</h2>
+
+                <form class="login-form" method="get" action="database.html">
+                    <div class="login-inputs-div">
+                        <div class="login-input-row">
+                            <span class="login-titles">Username:</span>
+                            <input class="login-inputs" type="text" placeholder="username" />
+                        </div>
+                        <div class="login-input-row">
+                            <span class="login-titles">Password:</span>
+                            <input class="login-inputs" type="password" placeholder="password" />
+                        </div>
+                    </div>
+                    <div>
+                        <button class="login-button" type="submit">Login</button>
+                    </div>
+                </form>
+
+                <form class="message-form" method="get" action="message.html">
+                    <p>Click the button below to chat with Andrew to get an account</p>
+                    <button type="submit">Message</button>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-left">
+                <span class="footer-top">Current Temp: 50F</span>
+                <span>Chance of Rain: 50%</span>
+            </div>
+            <div class="footer-right">
+                <div class="made-by">
+                    <span class="footer-top">Made By:</span>
+                    <span>Andrew Harding</span>
+                </div>
+                <div>
+                    <a class="github-button" href="https://github.com/andpdw/CS260-Startup">GitHub</a>
+                </div>
+            </div>
+        </footer>
+        
+    </body>
+</html>

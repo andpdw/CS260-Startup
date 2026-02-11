@@ -3,7 +3,7 @@
     src: url('star-shield-2-font/StarShieldV2-9M52K.ttf') format('truetype');
 }
 
-body {
+.body {
     margin: 0;
     height: 100vh;
     background-color: #626061;

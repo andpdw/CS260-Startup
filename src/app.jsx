@@ -16,7 +16,7 @@ export default function App() {
                     <nav>
                         <h1 className="logo">N106</h1>
                         <ul>
-                            <li><NavLink className="nav-bar" to="login">Home</NavLink></li>
+                            <li><NavLink className="nav-bar" to="">Home</NavLink></li>
                             <li><NavLink className="nav-bar" to="message">Message Page</NavLink></li>
                             <li><NavLink className="nav-bar" to="database">Entry Database</NavLink></li>
                             <li><NavLink className="nav-bar" to="camera">Live Camera</NavLink></li>
@@ -25,7 +25,7 @@ export default function App() {
                 </header>
 
                 <Routes>
-                    <Route path='/login' element={<Login />} exact />
+                    <Route path='/' element={<Login />} exact />
                     <Route path='/message' element={<Message />} />
                     <Route path='/database' element={<Database />} />
                     <Route path='/camera' element={<Camera />} />

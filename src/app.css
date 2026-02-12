@@ -3,7 +3,19 @@
     src: url('star-shield-2-font/StarShieldV2-9M52K.ttf') format('truetype');
 }
 
-.body {
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #626061;
+    display: flex;
+    flex-direction: column;
+    min-width: 425px;
+    min-height: 475px;
+    font-family: 'StarShield', sans-serif;
+    letter-spacing: 2px;
+}
+
+.main-div {
     margin: 0;
     height: 100vh;
     background-color: #626061;
@@ -39,9 +51,11 @@ nav {
 }
 
 nav ul {
+    margin: 10px;
     display: flex;
     list-style: none;
     margin-left: auto;
+    margin-right: 0px;
 }
 
 nav li {

@@ -11,7 +11,7 @@ import { Camera } from './camera/camera.jsx';
 export default function App() {
     return (
         <BrowserRouter>
-            <div className="body bg-dark text-light">
+            <div className="main-div">
                 <header>
                     <nav>
                         <h1 className="logo">N106</h1>

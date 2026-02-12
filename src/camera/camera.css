@@ -17,13 +17,25 @@ main {
 
 .video {
     width: 75%;
-    min-width: 400px;
+    min-width: 320px;
     max-width: 100%;
+    max-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .video video {
     width: 100%;
     height: auto;
+    max-height: 100%;
+    max-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
     object-fit: contain;
     padding: 20px;
+    box-sizing: border-box;
 }

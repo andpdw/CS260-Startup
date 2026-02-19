@@ -7,8 +7,14 @@ import { Login } from './login/login.jsx';
 import { Database } from './database/database.jsx';
 import { Message } from './message/message.jsx';
 import { Camera } from './camera/camera.jsx';
+import { AuthState } from './login/authState.js';
 
 export default function App() {
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    //const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const currentAuthState = AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
+
     return (
         <BrowserRouter>
             <div className="main-div">
@@ -25,7 +31,17 @@ export default function App() {
                 </header>
 
                 <Routes>
-                    <Route path='/' element={<Login />} exact />
+                    <Route path='/' element={
+                        <Login
+                            userName={userName}
+                            authState={authState}
+                            onAuthChange={(userName, authState) => {
+                                setAuthState(authState);
+                                setUserName(userName);
+                            }}
+                        />
+                        }
+                    exact />
                     <Route path='/message' element={<Message />} />
                     <Route path='/database' element={<Database />} />
                     <Route path='/camera' element={<Camera />} />

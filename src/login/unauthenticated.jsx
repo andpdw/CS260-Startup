@@ -5,8 +5,9 @@ import { AuthState } from "./authState";
 export function Unauthenticated({userName, onAuthChange}) {
     const [username, setUserName] = React.useState('');
 
-    async function createUser() {
+    async function login() {
         localStorage.setItem('userName', username);
+        onAuthChange(username, AuthState.Authenticated);
     }
 
     return (
@@ -17,7 +18,7 @@ export function Unauthenticated({userName, onAuthChange}) {
                 <div className="login-inputs-div">
                     <div className="login-input-row">
                         <span className="login-titles">Username:</span>
-                        <input className="login-inputs" type="text" placeholder="username" />
+                        <input value={username} onChange={(e) => setUserName(e.target.value)} className="login-inputs" type="text" placeholder="username" />
                     </div>
                     <div className="login-input-row">
                         <span className="login-titles">Password:</span>
@@ -25,7 +26,7 @@ export function Unauthenticated({userName, onAuthChange}) {
                     </div>
                 </div>
                 <div>
-                    <button className="login-button" type="button" onClick={() => onAuthChange(userName, AuthState.Authenticated)}>Login</button>
+                    <button className="login-button" type="button" onClick={() => login()}>Login</button>
                 </div>
             </form>
 

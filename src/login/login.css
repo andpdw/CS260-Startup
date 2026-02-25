@@ -43,6 +43,23 @@ main {
     color: #E7E7E7;
 }
 
+.logout-button {
+    background-color: #A00841;
+    color: white;
+    padding: 15px 26px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin: 104px auto;
+    transition: all 0.2s ease, transform 0.15s ease;
+}
+
+.logout-button:hover {
+    background-color: #800021;
+    color: #E7E7E7;
+}
+
 .login-titles {
     color: #EA3871;
     width: 110px;

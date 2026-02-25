@@ -17,6 +17,10 @@ export function Message({authState}) {
     const [m5, setM5] = React.useState({name: "Clayton", message: "I will be gone for the next 2 hours."});
     const [m6, setM6] = React.useState({name: "Clayton", message: "And I just got back"});
     const [m7, setM7] = React.useState({name: "Andrew", message: "I can set up your password in an hour"});
+    const [m8, setM8] = React.useState({name: "Carter", message: "I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen"});
+    const [m9, setM9] = React.useState({name: "Clayton", message: "I will be gone for the next 2 hours."});
+    const [m10, setM10] = React.useState({name: "Clayton", message: "And I just got back"});
+    const [m11, setM11] = React.useState({name: "", message: ""});
 
   return (
     <main>
@@ -25,6 +29,26 @@ export function Message({authState}) {
             </div>
             <div className="message-panel">
                 <div className="message-board">
+                    <MessageBox
+                        messageUserName={m11.name}
+                        messageData={m11.message}
+                    />
+
+                    <MessageBox
+                        messageUserName={m10.name}
+                        messageData={m10.message}
+                    />
+
+                    <MessageBox
+                        messageUserName={m9.name}
+                        messageData={m9.message}
+                    />
+
+                    <MessageBox
+                        messageUserName={m8.name}
+                        messageData={m8.message}
+                    />
+
                     <MessageBox
                         messageUserName={m7.name}
                         messageData={m7.message}

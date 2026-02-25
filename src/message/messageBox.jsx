@@ -1,11 +1,11 @@
 import React from "react";
 
-export function messageBox({messageUserName, messageData}) {
+export function MessageBox({messageUserName, messageData}) {
 
-    const [username, updateUsername] = React.userState(localStorage.getItem("username"));
+    const [username, updateUsername] = React.useState(localStorage.getItem("username"));
 
     return (
-        <div> 
+        <> 
             {username !== messageUserName && (
                 <div className="other-message">
                     <div className="username">
@@ -16,7 +16,7 @@ export function messageBox({messageUserName, messageData}) {
                     </div>
                 </div>
             )}
-        { username === messageUserName && (
+        {username === messageUserName && (
             <div className="own-message">
                 <div className="message-text">
                     <span>{messageData}</span>
@@ -26,7 +26,6 @@ export function messageBox({messageUserName, messageData}) {
                 </div>
             </div>
         )}
-        </div>
-        
+        </>
     )
 }

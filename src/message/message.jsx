@@ -4,6 +4,7 @@ import './message.css'
 import { AuthState } from '../login/authState';
 import { Unauthenticated } from '../login/unauthenticated';
 import { Authenticated } from '../login/authenticated';
+import { MessageBox } from './messageBox';
 
 export function Message({authState}) {
     const [username, serUserName] = React.useState(localStorage.getItem("username"));
@@ -24,14 +25,10 @@ export function Message({authState}) {
             </div>
             <div className="message-panel">
                 <div className="message-board">
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Clayton</span>
-                        </div>
-                        <div className="message-text">
-                            <span>I will be gone for the next 2 hours.</span>
-                        </div>
-                    </div>
+                    <MessageBox
+                        messageUserName={m7.name}
+                        messageData={m7.message}
+                    />
 
                     <div className="other-message">
                         <div className="username">

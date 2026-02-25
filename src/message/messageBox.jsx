@@ -16,16 +16,16 @@ export function MessageBox({messageUserName, messageData}) {
                     </div>
                 </div>
             )}
-        {username === messageUserName && (
-            <div className="own-message">
-                <div className="message-text">
-                    <span>{messageData}</span>
+            {username === messageUserName && (
+                <div className="own-message">
+                    <div className="message-text">
+                        <span>{messageData}</span>
+                    </div>
+                    <div className="own-name">
+                        <span>You</span>
+                    </div>
                 </div>
-                <div className="own-name">
-                    <span>You</span>
-                </div>
-            </div>
-        )}
+            )}
         </>
     )
 }

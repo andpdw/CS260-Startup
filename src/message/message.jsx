@@ -30,104 +30,40 @@ export function Message({authState}) {
                         messageData={m7.message}
                     />
 
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Carter</span>
-                        </div>
-                        <div className="message-text">
-                            <span>I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen</span>
-                        </div>
-                    </div>
+                    <MessageBox
+                        messageUserName={m6.name}
+                        messageData={m6.message}
+                    />
 
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Jeffery</span>
-                        </div>
-                        <div className="message-text">
-                            <span>I will be gone for the next 3 hours.</span>
-                        </div>
-                    </div>
+                    <MessageBox
+                        messageUserName={m5.name}
+                        messageData={m5.message}
+                    />
 
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Jacob</span>
-                        </div>
-                        <div className="message-text">
-                            <span>This is a real message</span>
-                        </div>
-                    </div>
+                    <MessageBox
+                        messageUserName={m4.name}
+                        messageData={m4.message}
+                    />
 
-                    <div className="own-message">
-                        <div className="message-text">
-                            <span>I can set up your password in an hour</span>
-                        </div>
-                        <div className="own-name">
-                            <span>You</span>
-                        </div>
-                    </div>
+                    <MessageBox
+                        messageUserName={m3.name}
+                        messageData={m3.message}
+                    />
 
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Clayton</span>
-                        </div>
-                        <div className="message-text">
-                            <span>And I just got back</span>
-                        </div>
-                    </div>
+                    <MessageBox
+                        messageUserName={m2.name}
+                        messageData={m2.message}
+                    />
 
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Clayton</span>
-                        </div>
-                        <div className="message-text">
-                            <span>I will be gone for the next 2 hours.</span>
-                        </div>
-                    </div>
+                    <MessageBox
+                        messageUserName={m1.name}
+                        messageData={m1.message}
+                    />
 
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Carter</span>
-                        </div>
-                        <div className="message-text">
-                            <span>I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen</span>
-                        </div>
-                    </div>
-
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Jeffery</span>
-                        </div>
-                        <div className="message-text">
-                            <span>I will be gone for the next 3 hours.</span>
-                        </div>
-                    </div>
-
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Jacob</span>
-                        </div>
-                        <div className="message-text">
-                            <span>This is a real message</span>
-                        </div>
-                    </div>
-
-                    <div className="own-message">
-                        <div className="message-text">
-                            <span>I can set up your password in an hour</span>
-                        </div>
-                        <div className="own-name">
-                            <span>You</span>
-                        </div>
-                    </div>
-
-                    <div className="other-message">
-                        <div className="username">
-                            <span>Clayton</span>
-                        </div>
-                        <div className="message-text">
-                            <span>And I just got back</span>
-                        </div>
-                    </div>
+                    <MessageBox
+                        messageUserName={m0.name}
+                        messageData={m0.message}
+                    />
                 </div>
                 <div className="message-box">
                     {authState === AuthState.Authenticated && (

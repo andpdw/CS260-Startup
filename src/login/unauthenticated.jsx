@@ -6,7 +6,7 @@ export function Unauthenticated({userName, onAuthChange}) {
     const [username, setUserName] = React.useState('');
 
     async function login() {
-        localStorage.setItem('userName', username);
+        localStorage.setItem('username', username);
         onAuthChange(username, AuthState.Authenticated);
     }
 

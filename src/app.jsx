@@ -42,7 +42,10 @@ export default function App() {
                         />
                         }
                     exact />
-                    <Route path='/message' element={<Message />} />
+                    <Route path='/message' element={
+                        <Message
+                            authState={authState} />}
+                        />
                     <Route path='/database' element={<Database />} />
                     <Route path='/camera' element={<Camera />} />
                     <Route path='*' element={<NotFound />} />

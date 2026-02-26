@@ -5,9 +5,11 @@ import { AuthState } from '../login/authState';
 import { Unauthenticated } from '../login/unauthenticated';
 import { Authenticated } from '../login/authenticated';
 import { MessageBox } from './messageBox';
+import { updateMessages } from './updateMessages';
 
 export function Message({authState}) {
     const [username, serUserName] = React.useState(localStorage.getItem("username"));
+    const [messageText, setText] = React.useState("");
 
     const [m0, setM0] = React.useState({name: "Clayton", message: "And I just got back"});
     const [m1, setM1] = React.useState({name: "Andrew", message: "I can set up your password in an hour"});
@@ -19,8 +21,14 @@ export function Message({authState}) {
     const [m7, setM7] = React.useState({name: "Andrew", message: "I can set up your password in an hour"});
     const [m8, setM8] = React.useState({name: "Carter", message: "I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen"});
     const [m9, setM9] = React.useState({name: "Clayton", message: "I will be gone for the next 2 hours."});
-    const [m10, setM10] = React.useState({name: "Clayton", message: "And I just got back"});
-    const [m11, setM11] = React.useState({name: "", message: ""});
+
+    const messages = [
+        m0, m1, m2, m3, m4, m5, m6, m7, m8, m9
+    ];
+
+    const setMessagesFuncs = [
+        setM0, setM1, setM2, setM3, setM4, setM5, setM6, setM7, setM8, setM9
+    ];
 
   return (
     <main>
@@ -29,16 +37,6 @@ export function Message({authState}) {
             </div>
             <div className="message-panel">
                 <div className="message-board">
-                    <MessageBox
-                        messageUserName={m11.name}
-                        messageData={m11.message}
-                    />
-
-                    <MessageBox
-                        messageUserName={m10.name}
-                        messageData={m10.message}
-                    />
-
                     <MessageBox
                         messageUserName={m9.name}
                         messageData={m9.message}
@@ -101,10 +99,10 @@ export function Message({authState}) {
                         </div>
                     )}
                     <div id="message-input">
-                        <textarea className="text-input" placeholder="Type message here"></textarea>
+                        <textarea className="text-input" placeholder="Type message here" value={messageText} onChange={(e) => setText(e.target.value)}></textarea>
                     </div>
                     <div id="send-button">
-                        <button type="button">Send Button</button>
+                        <button type="button" onClick={() => updateMessages(messages, setMessagesFuncs, username, messageText)}>Send Button</button>
                     </div>
                 </div>
             </div>

@@ -25,8 +25,12 @@ export default function App() {
                         <ul>
                             <li><NavLink className="nav-bar" to="">Home</NavLink></li>
                             <li><NavLink className="nav-bar" to="message">Message Page</NavLink></li>
-                            <li><NavLink className="nav-bar" to="database">Entry Database</NavLink></li>
-                            <li><NavLink className="nav-bar" to="camera">Live Camera</NavLink></li>
+                            {authState === AuthState.Authenticated && (
+                                <li><NavLink className="nav-bar" to="database">Entry Database</NavLink></li>
+                            )}
+                            {authState === AuthState.Authenticated && (
+                                <li><NavLink className="nav-bar" to="camera">Live Camera</NavLink></li>
+                            )}
                         </ul>
                     </nav>
                 </header>

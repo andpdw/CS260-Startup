@@ -33,8 +33,10 @@ export function Message({authState}) {
 
     React.useEffect(() => { getMessages(setMessagesFuncs, 10);}, [])
 
-  return (
-    <main>
+    setInterval(() => updateMessages(messages, setMessagesFuncs, "Server", "This is an automated message... For now"), 10000);
+
+    return (
+        <main>
             <div className="messages-title">
                 <h1>Messages</h1>
             </div>
@@ -110,5 +112,5 @@ export function Message({authState}) {
                 </div>
             </div>
         </main>
-  );
+    );
 }

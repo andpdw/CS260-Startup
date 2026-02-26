@@ -8,6 +8,7 @@ import { Database } from './database/database.jsx';
 import { Message } from './message/message.jsx';
 import { Camera } from './camera/camera.jsx';
 import { AuthState } from './login/authState.js';
+import { Footer } from './footer.jsx';
 
 export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -51,21 +52,7 @@ export default function App() {
                     <Route path='*' element={<NotFound />} />
                 </Routes>
                 
-                <footer>
-                    <div className="footer-left">
-                        <span className="footer-top">Current Temp: 50F</span>
-                        <span>Chance of Rain: 50%</span>
-                    </div>
-                    <div className="footer-right">
-                        <div className="made-by">
-                            <span className="footer-top">Made By:</span>
-                            <span>Andrew Harding</span>
-                        </div>
-                        <div>
-                            <a className="github-button" href="https://github.com/andpdw/CS260-Startup">GitHub</a>
-                        </div>
-                    </div>
-                </footer>
+                <Footer/>
 
             </div>
         </BrowserRouter>

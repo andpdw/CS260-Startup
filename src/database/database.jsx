@@ -11,6 +11,10 @@ export function Database() {
     const [state, setState] = React.useState("");
     const [guests, setGuests] = React.useState(false);
 
+    const setFunctions = [
+        setDate, setTime, setName, setState, setGuests
+    ]
+
   return (
     <main>
             <div className="table-title">
@@ -49,7 +53,14 @@ export function Database() {
                         </div>
                     </div>
                     <div id="submit-button">
-                        <button type="button" onClick={() => newEntry(date, time, name, state, guests)}>Submit</button>
+                        <button type="button" 
+                        onClick={() => {
+                            const allData = newEntry(date, time, name, state, guests, setFunctions)
+                            
+                            if (!allData) {
+                                alert("Please fill out all fields before submitting")
+                            }
+                        }}>Submit</button>
                     </div>
                 </div>
             </div>

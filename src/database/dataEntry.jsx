@@ -11,15 +11,26 @@ function getData() {
     return databaseEntries;
 }
 
-export function newEntry(date, time, name, state, guests) {
-    console.log(time);
-    let sGuests = "";
-    if (guests) {
-        sGuests = "Yes";
+export function newEntry(date, time, name, state, guests, setFunctions) {
+
+    if (date === "" || time === "" || name === "" || state === "") {
+        return false;
     } else {
-        sGuests = "No";
+        let sGuests = "";
+        if (guests) {
+            sGuests = "Yes";
+        } else {
+            sGuests = "No";
+        }
+        databaseEntries.push({date: date, time: time, name: name, state: state, guests: sGuests});
+        
+        for (let i = 0; i < 4; i++) {
+            setFunctions[i]("");
+        }
+        setFunctions[4](false);
+        
+        return true;
     }
-    databaseEntries.push({date: date, time: time, name: name, state: state, guests: sGuests});
 }
 
 export function DataTable() {

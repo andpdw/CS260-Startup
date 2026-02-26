@@ -2,8 +2,15 @@ import React from 'react';
 import './database.css'
 
 import { DataTable } from './dataEntry';
+import { newEntry } from './dataEntry';
 
 export function Database() {
+    const [date, setDate] = React.useState("");
+    const [time, setTime] = React.useState("");
+    const [name, setName] = React.useState("");
+    const [state, setState] = React.useState("");
+    const [guests, setGuests] = React.useState(false);
+
   return (
     <main>
             <div className="table-title">
@@ -19,30 +26,30 @@ export function Database() {
                 <div className="input-fields">
                     <div id="input-group-1">
                         <div>
-                            <input type="date" placeholder="Date"></input>
+                            <input type="date" placeholder="Date" value={date} onChange={(e) => setDate(e.target.value)}></input>
                         </div>
                         <div>
-                            <input type="time" placeholder="Time"></input>
+                            <input type="time" placeholder="Time" value={time} onChange={(e) => setTime(e.target.value)}></input>
                         </div>
                         <div>
-                            <input type="text" placeholder="Name"></input>
+                            <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}></input>
                         </div>
                     </div>
                     <div id="input-group-2">
                         <div>
-                            <input type="radio" id="Entering" name="entering-leaving" value="Entering"></input>
+                            <input type="radio" id="Entering" name="entering-leaving" value="Entering" checked={state === "Entering"} onChange={(e) => setState(e.target.value)}></input>
                             <label htmlFor="Entering">Entering</label>
 
-                            <input type="radio" id="Leaving" name="entering-leaving" value="Leaving"></input>
+                            <input type="radio" id="Leaving" name="entering-leaving" value="Leaving" checked={state === "Leaving"} onChange={(e) => setState(e.target.value)}></input>
                             <label htmlFor="Leaving">Leaving</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="guests" name="guests" value="Yes"></input>
+                            <input type="checkbox" id="guests" name="guests" checked={guests} onChange={(e) => setGuests(e.target.checked)}></input>
                             <label htmlFor="guests">Guests</label>
                         </div>
                     </div>
                     <div id="submit-button">
-                        <button type="button">Submit</button>
+                        <button type="button" onClick={() => newEntry(date, time, name, state, guests)}>Submit</button>
                     </div>
                 </div>
             </div>

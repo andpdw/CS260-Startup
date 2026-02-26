@@ -1,14 +1,25 @@
 import React from "react";
 
 const databaseEntries = [
-    {date:"01/25/26", time:"5:32 PM", name:"Andrew", state:"Leaving", guests:"No"},
-    {data:"01/25/26", time:"5:39 PM", name:"Jacob", state:"Entering", guests:"No"},
-    {data:"01/25/26", time:"5:59 PM", name:"Clayton", state:"Leaving", guests:"No"},
-    {data:"01/25/26", time:"6:45 PM", name:"Andrew", state:"Entering", guests:"Yes"},
+    {date:"01-25-26", time:"5:32", name:"Andrew", state:"Leaving", guests:"No"},
+    {date:"01-25-26", time:"5:39", name:"Jacob", state:"Entering", guests:"No"},
+    {date:"01-25-26", time:"5:59", name:"Clayton", state:"Leaving", guests:"No"},
+    {date:"01-25-26", time:"6:45", name:"Andrew", state:"Entering", guests:"Yes"},
 ]
 
 function getData() {
     return databaseEntries;
+}
+
+export function newEntry(date, time, name, state, guests) {
+    console.log(time);
+    let sGuests = "";
+    if (guests) {
+        sGuests = "Yes";
+    } else {
+        sGuests = "No";
+    }
+    databaseEntries.push({date: date, time: time, name: name, state: state, guests: sGuests});
 }
 
 export function DataTable() {

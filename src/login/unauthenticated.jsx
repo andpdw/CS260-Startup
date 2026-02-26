@@ -3,11 +3,13 @@ import React from "react";
 import { AuthState } from "./authState";
 
 export function Unauthenticated({userName, onAuthChange}) {
-    const [username, setUserName] = React.useState('');
+    const [username, setUserName] = React.useState("");
+    const [password, setPassword] = React.useState("");
     localStorage.setItem("username", "Guest")
 
     async function login() {
-        localStorage.setItem('username', username);
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password)
         onAuthChange(username, AuthState.Authenticated);
     }
 
@@ -23,7 +25,7 @@ export function Unauthenticated({userName, onAuthChange}) {
                     </div>
                     <div className="login-input-row">
                         <span className="login-titles">Password:</span>
-                        <input className="login-inputs" type="password" placeholder="password" />
+                        <input className="login-inputs" type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                 </div>
                 <div>

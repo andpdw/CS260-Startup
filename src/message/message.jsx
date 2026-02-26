@@ -6,21 +6,22 @@ import { Unauthenticated } from '../login/unauthenticated';
 import { Authenticated } from '../login/authenticated';
 import { MessageBox } from './messageBox';
 import { updateMessages } from './updateMessages';
+import { getMessages } from './updateMessages';
 
 export function Message({authState}) {
-    const [username, serUserName] = React.useState(localStorage.getItem("username"));
+    const [username, setUserName] = React.useState(localStorage.getItem("username"));
     const [messageText, setText] = React.useState("");
 
-    const [m0, setM0] = React.useState({name: "Clayton", message: "And I just got back"});
-    const [m1, setM1] = React.useState({name: "Andrew", message: "I can set up your password in an hour"});
-    const [m2, setM2] = React.useState({name: "Jacob", message: "This is a real message"});
-    const [m3, setM3] = React.useState({name: "Jeffery", message: "I will be gone for the next 3 hours."});
-    const [m4, setM4] = React.useState({name: "Carter", message: "I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen"});
-    const [m5, setM5] = React.useState({name: "Clayton", message: "I will be gone for the next 2 hours."});
-    const [m6, setM6] = React.useState({name: "Clayton", message: "And I just got back"});
-    const [m7, setM7] = React.useState({name: "Andrew", message: "I can set up your password in an hour"});
-    const [m8, setM8] = React.useState({name: "Carter", message: "I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen"});
-    const [m9, setM9] = React.useState({name: "Clayton", message: "I will be gone for the next 2 hours."});
+    const [m0, setM0] = React.useState({name: "", message: ""});
+    const [m1, setM1] = React.useState({name: "", message: ""});
+    const [m2, setM2] = React.useState({name: "", message: ""});
+    const [m3, setM3] = React.useState({name: "", message: ""});
+    const [m4, setM4] = React.useState({name: "", message: ""});
+    const [m5, setM5] = React.useState({name: "", message: ""});
+    const [m6, setM6] = React.useState({name: "", message: ""});
+    const [m7, setM7] = React.useState({name: "", message: ""});
+    const [m8, setM8] = React.useState({name: "", message: ""});
+    const [m9, setM9] = React.useState({name: "", message: ""});
 
     const messages = [
         m0, m1, m2, m3, m4, m5, m6, m7, m8, m9
@@ -29,6 +30,8 @@ export function Message({authState}) {
     const setMessagesFuncs = [
         setM0, setM1, setM2, setM3, setM4, setM5, setM6, setM7, setM8, setM9
     ];
+
+    React.useEffect(() => { getMessages(setMessagesFuncs, 10);}, [])
 
   return (
     <main>

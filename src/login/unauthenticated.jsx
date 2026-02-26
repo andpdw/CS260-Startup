@@ -4,6 +4,7 @@ import { AuthState } from "./authState";
 
 export function Unauthenticated({userName, onAuthChange}) {
     const [username, setUserName] = React.useState('');
+    localStorage.setItem("username", "Guest")
 
     async function login() {
         localStorage.setItem('username', username);

@@ -17,6 +17,7 @@ main {
     flex-direction: column;
     flex: .50;
     min-height: 400px;
+    min-width: 100%;
 }
 
 .message-board {

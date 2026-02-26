@@ -8,9 +8,13 @@ export function Unauthenticated({userName, onAuthChange}) {
     localStorage.setItem("username", "Guest")
 
     async function login() {
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password)
-        onAuthChange(username, AuthState.Authenticated);
+        if (username === "") {
+            alert("Please Enter a username");
+        } else {
+            localStorage.setItem("username", username);
+            localStorage.setItem("password", password)
+            onAuthChange(username, AuthState.Authenticated);
+        }
     }
 
     return (

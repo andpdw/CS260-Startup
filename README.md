@@ -96,6 +96,14 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **All functionality implemented or mocked out** - I did this
 - [x] **Hooks** - Done
+- Notes:
+    To simulate the login functionality I made a class for authenticated or not, and based on that the site determines what the user can see.  It saves the login username in local storage and that username is used a few other places like on the message board to determine how messages are organized
+    
+    To simulate the message board I made two functions, one that will get and populate messages, for the time being it gets them from an array but later it will get it from the server. There is another function that is used when a message is sent to update the functions on screen and move them up. This will be used when a user sends a message to update the messages that are displayed. There is also a automated message that shows up every 10 seconds to simulate the websocket in the future.
+
+    To simulate the database functionality there is a function that gets the data and loops through it to make a table. Right now it gets it from a array but once a server/database is functioning it will be able to get the data from there.
+
+    There is also a basic weather update functionality that right now just gets set values but the function is set up so it can get the data from a service for later. 
 
 ## 🚀 Service deliverable
 

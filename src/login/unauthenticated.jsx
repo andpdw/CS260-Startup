@@ -5,9 +5,31 @@ import { AuthState } from "./authState";
 export function Unauthenticated({userName, onAuthChange}) {
     const [username, setUserName] = React.useState("");
     const [password, setPassword] = React.useState("");
-    localStorage.setItem("username", "Guest")
+    localStorage.setItem("username", "Guest");
 
-    async function login() {
+    async function loginUser() {
+        if (username === "") {
+            alert("Please Enter a username");
+        } else {
+            const response = await fetch("/api/auth/login", {
+                method: 'post',
+                body: JSON.stringify({ username: username, password: password}),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            });
+
+            if (response?.status === 200) {
+                localStorage.setItem("username", username);
+                onAuthChange(username, AuthState.Authenticated);
+            } else {
+                const body = await response.json();
+                setDisplayError("Error: ${body.msg}");
+            }
+        }
+    }
+
+    /*async function login() {
         if (username === "") {
             alert("Please Enter a username");
         } else {
@@ -15,7 +37,7 @@ export function Unauthenticated({userName, onAuthChange}) {
             localStorage.setItem("password", password)
             onAuthChange(username, AuthState.Authenticated);
         }
-    }
+    }*/
 
     return (
         <>
@@ -33,7 +55,7 @@ export function Unauthenticated({userName, onAuthChange}) {
                     </div>
                 </div>
                 <div>
-                    <button className="login-button" type="button" onClick={() => login()}>Login</button>
+                    <button className="login-button" type="button" onClick={() => loginUser()}>Login</button>
                 </div>
             </form>
 

@@ -9,7 +9,7 @@ export function Login({userName, authState, onAuthChange}) {
   return (
     <main>
       <div className="login-box">
-        {authState === AuthState.Authenticated && (
+        {(authState === AuthState.Authenticated || authState === AuthState.Admin) && (
           <Authenticated
             userName={userName}
             onAuthChange={onAuthChange}

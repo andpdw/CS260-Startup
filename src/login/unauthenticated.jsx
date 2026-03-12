@@ -20,8 +20,14 @@ export function Unauthenticated({userName, onAuthChange}) {
             });
 
             if (response?.status === 200) {
-                localStorage.setItem("username", username);
-                onAuthChange(username, AuthState.Authenticated);
+                const data = await response.json();
+
+                localStorage.setItem("username", data.username);
+                if (data.admin) {
+                    onAuthChange(username, AuthState.Admin);
+                } else {
+                    onAuthChange(username, AuthState.Authenticated);
+                }
             } else {
                 const body = await response.json();
                 alert(body.msg);

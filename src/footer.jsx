@@ -1,17 +1,42 @@
 import React from "react";
 
-function getWeather() {
-    return [50, 25];
-}
-
 export function Footer() {
-    let [temp, rain] = getWeather();
+
+    const [weather, setWeather] = React.useState({
+        temp: "--",
+        rain: "--",
+    });
+
+    React.useEffect(() => {
+        async function loadWeather() {
+            try {
+                const response = await fetch("/api/weather");
+
+                if (response.status !== 200) {
+                    throw new Error("Weather request failed");
+                }
+
+                const data = await response.json();
+                setWeather({
+                    temp: data.temp,
+                    rain: data.rain,
+                });
+            } catch {
+                setWeather({
+                    temp: "NA",
+                    rain: "NA",
+                });
+            }
+        }
+
+        loadWeather();
+    }, [])
 
     return (
         <footer>
             <div className="footer-left">
-                <span className="footer-top">Current Temp: {temp}F</span>
-                <span>Chance of Rain: {rain}%</span>
+                <span className="footer-top">Current Temp: {weather.temp}F</span>
+                <span>Rain: {weather.rain} mm</span>
             </div>
             <div className="footer-right">
                 <div className="made-by">

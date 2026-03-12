@@ -174,6 +174,36 @@ apiRouter.post("/database", verifyAuth, (req, res) => {
     }
 })
 
+apiRouter.get("/weather", async (_req, res) => {
+    const apiKey = process.env.WEATHERSTACK_API_KEY;
+
+    if (!apiKey) {
+        return res.status(500).send({ msg: "Missing WEATHERSTACK_API_KEY" });
+    }
+
+    try {
+        const params = new URLSearchParams({
+            access_key: apiKey,
+            query: "Provo, Utah",
+            units: "f",
+        });
+
+        const response = await fetch(`https://api.weatherstack.com/current?${params.toString()}`);
+        const data = await response.json();
+
+        if (data.error) {
+            return res.status(502).send({ mesg: data.error.info || "Weather API failed" });
+        }
+
+        res.send({
+            temp: data.current.temperature,
+            rain: data.current.precip,
+        });
+    } catch (error) {
+        res.status(500).send({ msg: "Failed to fetch weather data" });
+    }
+})
+
 app.use(function (err, req, res, next) {
     res.status(500).send({ type: err.name, message: err.message });
 });

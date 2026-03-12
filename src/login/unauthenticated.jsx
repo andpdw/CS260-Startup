@@ -11,7 +11,7 @@ export function Unauthenticated({userName, onAuthChange}) {
         if (username === "") {
             alert("Please Enter a username");
         } else {
-            const response = await fetch("/api/auth/login", {
+            const response = await fetch('/api/auth/login', {
                 method: 'post',
                 body: JSON.stringify({ username: username, password: password}),
                 headers: {
@@ -24,7 +24,7 @@ export function Unauthenticated({userName, onAuthChange}) {
                 onAuthChange(username, AuthState.Authenticated);
             } else {
                 const body = await response.json();
-                setDisplayError("Error: ${body.msg}");
+                alert(body.msg);
             }
         }
     }

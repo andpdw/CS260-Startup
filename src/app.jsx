@@ -7,6 +7,7 @@ import { Login } from './login/login.jsx';
 import { Database } from './database/database.jsx';
 import { Message } from './message/message.jsx';
 import { Camera } from './camera/camera.jsx';
+import { CreateUser } from './createUser/createUser.jsx';
 import { AuthState } from './login/authState.js';
 import { Footer } from './footer.jsx';
 
@@ -24,6 +25,9 @@ export default function App() {
                         <h1 className="logo">N106</h1>
                         <ul>
                             <li><NavLink className="nav-bar" to="">Home</NavLink></li>
+                            {authState === AuthState.Authenticated && (
+                                <li><NavLink className="nav-bar" to="createUser">Create User</NavLink></li>
+                            )}
                             <li><NavLink className="nav-bar" to="message">Message Page</NavLink></li>
                             {authState === AuthState.Authenticated && (
                                 <li><NavLink className="nav-bar" to="database">Entry Database</NavLink></li>
@@ -53,6 +57,7 @@ export default function App() {
                         />
                     <Route path='/database' element={<Database />} />
                     <Route path='/camera' element={<Camera />} />
+                    <Route path='/createUser' element={<CreateUser />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
                 

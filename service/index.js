@@ -2,7 +2,9 @@ const express = require("express");
 
 const app = express();
 
-let users = [];
+let users = [
+    { username: "admin", password: "adminpass"},
+    { username: "normal", password: "pass"}];
 let entriest = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;

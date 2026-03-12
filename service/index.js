@@ -1,15 +1,27 @@
-const cookieParser = require("cookie-parser");
-const express = require("express");
-const uuid = require("uuid");
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcryptjs');
+const express = require('express');
+const uuid = require('uuid');
+const app = express();
 
 const authCookieName = "Token";
 
-const app = express();
+
+
+async function setPasswords(users) {
+    const adminPasswordHash = await bcrypt.hash("adminpass", 10);
+    const passwordHash = await bcrypt.hash("pass", 10);
+
+    users[0].password = adminPasswordHash;
+    users[1].password = passwordHash;
+}
 
 let users = [
-    { username: "admin", password: "adminpass", admin: true, token: ""},
-    { username: "normal", password: "pass", admin: false, token: ""}];
+    { username: "admin", password: "", admin: true, token: ""},
+    { username: "normal", password: "", admin: false, token: ""}];
 let entriest = [];
+
+setPasswords(users);
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
@@ -26,7 +38,7 @@ apiRouter.post("/auth/login", async (req, res) => {
     const user = await findUser("username", req.body.username);
 
     if (user) {
-        if (req.body.password === user.password) {
+        if (await bcrypt.compare(req.body.password, user.password)) {
             user.token = uuid.v4();
             setAuthCookie(res, user.token);
             res.send({username: user.username, admin: user.admin});
@@ -54,9 +66,10 @@ async function findUser(field, value) {
 }
 
 async function createUser(username, password) {
+    const passwordHash = await bcrypt.hash(password, 10);
     const user = {
         username: username,
-        password: password,
+        password: passwordHash,
         token: 0,
     };
 

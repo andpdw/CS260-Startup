@@ -25,7 +25,7 @@ export function CreateUser() {
         const data = await response.json();
         
         alert(`New user with username: ${data.username}`);
-        setUserName()
+        setUserName("");
       } else {
         const body = await response.json();
         alert(body.msg);

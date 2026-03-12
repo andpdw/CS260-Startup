@@ -34,6 +34,15 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use("/api", apiRouter);
 
+const verifyAuth = async (req, res, next) => {
+    const user = await findUser("token", req.cookies[authCookieName]);
+    if (user) {
+        next();
+    } else {
+        res.status(401).send({ msg: "Unauthorized" });
+    }
+}
+
 apiRouter.post("/auth/login", async (req, res) => {
     const user = await findUser("username", req.body.username);
 
@@ -48,7 +57,7 @@ apiRouter.post("/auth/login", async (req, res) => {
     res.status(401).send({msg: "Unauthorized" });
 });
 
-apiRouter.post("/auth/create", async (req, res) => {
+apiRouter.post("/auth/create", verifyAuth, async (req, res) => {
     if (await findUser("username", req.body.username)) {
         res.status(409).send({msg: "Existing user"});
     } else {

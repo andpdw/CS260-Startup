@@ -35,16 +35,6 @@ export function Unauthenticated({userName, onAuthChange}) {
         }
     }
 
-    /*async function login() {
-        if (username === "") {
-            alert("Please Enter a username");
-        } else {
-            localStorage.setItem("username", username);
-            localStorage.setItem("password", password)
-            onAuthChange(username, AuthState.Authenticated);
-        }
-    }*/
-
     return (
         <>
             <h2>Login</h2>
@@ -66,8 +56,7 @@ export function Unauthenticated({userName, onAuthChange}) {
             </form>
 
             <form className="message-form" method="get" action="message">
-                <p>Click the button below to chat with Andrew to get an account</p>
-                <button type="submit">Message</button>
+                <p>Reach out to Andrew to get an account set up</p>
             </form>
         </>
     )

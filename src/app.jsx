@@ -28,7 +28,9 @@ export default function App() {
                             {authState === AuthState.Admin && (
                                 <li><NavLink className="nav-bar" to="createUser">Create User</NavLink></li>
                             )}
-                            <li><NavLink className="nav-bar" to="message">Message Page</NavLink></li>
+                            {(authState === AuthState.Authenticated || authState === AuthState.Admin) && (
+                                <li><NavLink className="nav-bar" to="message">Message Page</NavLink></li>
+                            )}
                             {(authState === AuthState.Authenticated || authState === AuthState.Admin) && (
                                 <li><NavLink className="nav-bar" to="database">Entry Database</NavLink></li>
                             )}

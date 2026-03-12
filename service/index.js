@@ -16,8 +16,8 @@ async function setPasswords(users) {
 }
 
 let users = [
-    { username: "admin", password: "", admin: true, token: ""},
-    { username: "normal", password: "", admin: false, token: ""}];
+    { username: "admin", password: "", admin: true},
+    { username: "normal", password: "", admin: false}];
 let database = [];
 
 setPasswords(users);
@@ -48,7 +48,7 @@ apiRouter.post("/auth/login", async (req, res) => {
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
             user.token = uuid.v4();
-            setAuthCookie(res, user.token);
+            setAuthCookie(res, user.token, user.admin);
             res.send({username: user.username, admin: user.admin});
             return;
         }
@@ -62,7 +62,6 @@ apiRouter.post("/auth/create", verifyAuth, async (req, res) => {
     } else {
         const user = await createUser(req.body.username, req.body.password);
 
-        setAuthCookie(res, user.token);
         res.status(201).send({username: req.body.username});
     }
 });
@@ -87,7 +86,6 @@ async function createUser(username, password) {
     const user = {
         username: username,
         password: passwordHash,
-        token: 0,
     };
 
     users.push(user);
@@ -95,13 +93,22 @@ async function createUser(username, password) {
     return user;
 }
 
-function setAuthCookie(res, authToken) {
-    res.cookie(authCookieName, authToken, {
-        maxAge: 1000 * 60 * 60 * 24 * 365,
-        security: true,
-        httpOnly: true,
-        sameSite: "strict",
-    });
+function setAuthCookie(res, authToken, admin) {
+    if (admin) {
+        res.cookie(authCookieName, authToken, {
+            maxAge: 1000 * 60,
+            security: true,
+            httpOnly: true,
+            sameSite: "strict",
+        });
+    } else {
+        res.cookie(authCookieName, authToken, {
+            maxAge: 1000 * 60 * 60 * 24 * 365,
+            security: true,
+            httpOnly: true,
+            sameSite: "strict",
+        });
+    }
 }
 
 app.listen(port, () => {

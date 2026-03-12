@@ -30,17 +30,18 @@ export function Message({authState}) {
     async function sendMessage(name, message) {
         const newMessage = {name: name, message: message};
 
-        await fetch("api/message", {
+        await fetch("/api/message", {
             method: "POST",
             headers: {"content-type": "application/json" },
             body: JSON.stringify(newMessage),
         });
         
+        setText("");
         getMessages();
     }
 
     async function getMessages() {
-        const response = await fetch("api/message");
+        const response = await fetch("/api/message");
 
         if (response?.status === 200) {
             const data = await response.json();
@@ -55,9 +56,11 @@ export function Message({authState}) {
         }
     }
 
-    React.useEffect(() => { getMessages();}, [])
-
-    setInterval(() => sendMessage("Server", "This is an automated message... For now"), 10000);
+    React.useEffect(() => { 
+        getMessages();
+        const intervalId = setInterval(() => sendMessage("Server", "This is an automated message... For now"), 10000);
+        return () => clearInterval(intervalId);
+    }, [])
 
     return (
         <main>

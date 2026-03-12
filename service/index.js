@@ -127,11 +127,12 @@ function setAuthCookie(res, authToken, admin) {
 
 function updateMessages(newMessage) {
     messages.unshift(newMessage);
+    return messages;
 }
 
 apiRouter.get("/message", verifyAuth, (_req, res) => {
     if (messages.length > 10) {
-        res.send(messages.slice(0, 20));
+        res.send(messages.slice(0, 10));
     } else {
         res.send(messages);
     }
@@ -140,7 +141,7 @@ apiRouter.get("/message", verifyAuth, (_req, res) => {
 apiRouter.post("/message", verifyAuth, (req, res) => {
     messages = updateMessages(req.body);
     if (messages.length > 10) {
-        res.send(messages.slice(0, 20));
+        res.send(messages.slice(0, 10));
     } else {
         res.send(messages);
     }

@@ -7,7 +7,6 @@ const app = express();
 const authCookieName = "Token";
 
 
-
 async function setPasswords(users) {
     const adminPasswordHash = await bcrypt.hash("adminpass", 10);
     const passwordHash = await bcrypt.hash("pass", 10);
@@ -19,7 +18,7 @@ async function setPasswords(users) {
 let users = [
     { username: "admin", password: "", admin: true, token: ""},
     { username: "normal", password: "", admin: false, token: ""}];
-let entriest = [];
+let database = [];
 
 setPasswords(users);
 
@@ -66,6 +65,15 @@ apiRouter.post("/auth/create", verifyAuth, async (req, res) => {
         setAuthCookie(res, user.token);
         res.status(201).send({username: req.body.username});
     }
+});
+
+apiRouter.delete("/auth/logout", async (req, res) => {
+    const user = await findUser("token", req.cookies[authCookieName]);
+    if (user) {
+        delete user.token;
+    }
+    res.clearCookie(authCookieName);
+    res.status(204).end();
 });
 
 async function findUser(field, value) {

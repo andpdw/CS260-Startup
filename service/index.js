@@ -32,7 +32,12 @@ let messages = [
     {name: "Clayton", message: "I will be gone for the next 2 hours."}
 ];
 
-let database = [];
+let database = [
+    {date:"01/25/26", time:"5:32", name:"Andrew", state:"Leaving", guests:"No"},
+    {date:"01/25/26", time:"5:39", name:"Jacob", state:"Entering", guests:"No"},
+    {date:"01/25/26", time:"5:59", name:"Clayton", state:"Leaving", guests:"No"},
+    {date:"01/25/26", time:"6:45", name:"Andrew", state:"Entering", guests:"Yes"},
+];
 
 setPasswords(users);
 
@@ -130,6 +135,11 @@ function updateMessages(newMessage) {
     return messages;
 }
 
+function updateDatabase(entry) {
+    database.unshift(entry);
+    return database;
+}
+
 apiRouter.get("/message", verifyAuth, (_req, res) => {
     if (messages.length > 10) {
         res.send(messages.slice(0, 10));
@@ -144,6 +154,23 @@ apiRouter.post("/message", verifyAuth, (req, res) => {
         res.send(messages.slice(0, 10));
     } else {
         res.send(messages);
+    }
+})
+
+apiRouter.get("/database", verifyAuth, (_req, res) => {
+    if (database.length > 20) {
+        res.send(database.slice(0, 20));
+    } else {
+        res.send(database);
+    }
+})
+
+apiRouter.post("/database", verifyAuth, (req, res) => {
+    database = updateDatabase(req.body);
+    if (database.length > 20) {
+        res.send(database.slice(0, 20));
+    } else {
+        res.send(database);
     }
 })
 

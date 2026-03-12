@@ -15,7 +15,7 @@ export function CreateUser() {
     } else {
       const response = await fetch("/api/auth/create", {
         method: "post",
-        body: JSON.stringify({username: username, password, password}),
+        body: JSON.stringify({username: username, password: password}),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },

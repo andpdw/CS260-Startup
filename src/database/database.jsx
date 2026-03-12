@@ -11,17 +11,44 @@ export function Database() {
     const [state, setState] = React.useState("");
     const [guests, setGuests] = React.useState(false);
 
+    const [data, setData] = React.useState([]);
+
     const setFunctions = [
         setDate, setTime, setName, setState, setGuests
     ]
 
-  return (
+    async function addEntry(entry) {
+        const response = await fetch("/api/database", {
+            method: "POST",
+            headers: {"content-type": "application/json" },
+            body: JSON.stringify(entry),
+        });
+
+        if (response?.status === 200) {
+            const result = await response.json();
+            setData(result);
+        }
+    }
+
+    async function getData() {
+        const response = await fetch("/api/database");
+
+        if (response?.status === 200) {
+            const result = await response.json();
+            setData(result);
+        }
+    }
+
+    return (
     <main>
             <div className="table-title">
                 <h3>Roomate Tracking</h3>
             </div>
             <div className="data-table-div">
-                <DataTable/>
+                <DataTable
+                data={data}
+                getData={getData}
+                />
             </div>
             <div className="data-entry-div">
                 <div>
@@ -55,10 +82,10 @@ export function Database() {
                     <div id="submit-button">
                         <button type="button" 
                         onClick={() => {
-                            const allData = newEntry(date, time, name, state, guests, setFunctions)
+                            const allData = newEntry(date, time, name, state, guests, setFunctions, addEntry);
                             
                             if (!allData) {
-                                alert("Please fill out all fields before submitting")
+                                alert("Please fill out all fields before submitting");
                             }
                         }}>Submit</button>
                     </div>

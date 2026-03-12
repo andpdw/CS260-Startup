@@ -18,6 +18,7 @@ async function setPasswords(users) {
 let users = [
     { username: "admin", password: "", admin: true},
     { username: "normal", password: "", admin: false}];
+let messages = [];
 let database = [];
 
 setPasswords(users);
@@ -110,6 +111,14 @@ function setAuthCookie(res, authToken, admin) {
         });
     }
 }
+
+app.use(function (err, req, res, next) {
+    res.status(500).send({ type: err.name, message: err.message });
+});
+
+app.use((_req, res) => {
+    res.sendFile("index.html", {root: "public"});
+});
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

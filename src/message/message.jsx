@@ -2,11 +2,7 @@ import React from 'react';
 import './message.css'
 
 import { AuthState } from '../login/authState';
-import { Unauthenticated } from '../login/unauthenticated';
-import { Authenticated } from '../login/authenticated';
 import { MessageBox } from './messageBox';
-import { updateMessages } from './updateMessages';
-import { getMessages } from './updateMessages';
 
 export function Message({authState}) {
     const [username, setUserName] = React.useState(localStorage.getItem("username"));
@@ -31,9 +27,37 @@ export function Message({authState}) {
         setM0, setM1, setM2, setM3, setM4, setM5, setM6, setM7, setM8, setM9
     ];
 
-    React.useEffect(() => { getMessages(setMessagesFuncs, 10);}, [])
+    async function sendMessage(name, message) {
+        const newMessage = {name: name, message: message};
 
-    setInterval(() => updateMessages(messages, setMessagesFuncs, "Server", "This is an automated message... For now"), 10000);
+        await fetch("api/message", {
+            method: "POST",
+            headers: {"content-type": "application/json" },
+            body: JSON.stringify(newMessage),
+        });
+        
+        getMessages();
+    }
+
+    async function getMessages() {
+        const response = await fetch("api/message");
+
+        if (response?.status === 200) {
+            const data = await response.json();
+
+            for (let i = 0; i < data.length; i++) {
+                setMessagesFuncs[i]({
+                    name: data[i].name,
+                    message: data[i].message
+                })
+            }
+
+        }
+    }
+
+    React.useEffect(() => { getMessages();}, [])
+
+    setInterval(() => sendMessage("Server", "This is an automated message... For now"), 10000);
 
     return (
         <main>
@@ -107,7 +131,7 @@ export function Message({authState}) {
                         <textarea className="text-input" placeholder="Type message here" value={messageText} onChange={(e) => setText(e.target.value)}></textarea>
                     </div>
                     <div id="send-button">
-                        <button type="button" onClick={() => updateMessages(messages, setMessagesFuncs, username, messageText)}>Send Button</button>
+                        <button type="button" onClick={() => sendMessage(username, messageText)}>Send Button</button>
                     </div>
                 </div>
             </div>

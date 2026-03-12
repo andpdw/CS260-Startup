@@ -18,7 +18,20 @@ async function setPasswords(users) {
 let users = [
     { username: "admin", password: "", admin: true},
     { username: "normal", password: "", admin: false}];
-let messages = [];
+
+let messages = [
+    {name: "Clayton", message: "And I just got back"},
+    {name: "Andrew", message: "I can set up your password in an hour"},
+    {name: "Jacob", message: "This is a real message"},
+    {name: "Jeffery", message: "I will be gone for the next 3 hours."},
+    {name: "Carter", message: "I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen"},
+    {name: "Clayton", message: "I will be gone for the next 2 hours."},
+    {name: "Clayton", message: "And I just got back"},
+    {name: "Andrew", message: "I can set up your password in an hour"},
+    {name: "Carter", message: "I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen"},
+    {name: "Clayton", message: "I will be gone for the next 2 hours."}
+];
+
 let database = [];
 
 setPasswords(users);
@@ -111,6 +124,27 @@ function setAuthCookie(res, authToken, admin) {
         });
     }
 }
+
+function updateMessages(newMessage) {
+    messages.unshift(newMessage);
+}
+
+apiRouter.get("/message", verifyAuth, (_req, res) => {
+    if (messages.length > 10) {
+        res.send(messages.slice(0, 20));
+    } else {
+        res.send(messages);
+    }
+})
+
+apiRouter.post("/message", verifyAuth, (req, res) => {
+    messages = updateMessages(req.body);
+    if (messages.length > 10) {
+        res.send(messages.slice(0, 20));
+    } else {
+        res.send(messages);
+    }
+})
 
 app.use(function (err, req, res, next) {
     res.status(500).send({ type: err.name, message: err.message });

@@ -9,6 +9,30 @@ export function CreateUser() {
   const [username, setUserName] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  async function createUser() {
+    if (username === "" || password === "") {
+      alert("Enter a Username and Password");
+    } else {
+      const response = await fetch("/api/auth/create", {
+        method: "post",
+        body: JSON.stringify({username: username, password, password}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+
+      if (response?.status === 201) {
+        const data = await response.json();
+        
+        alert(`New user with username: ${data.username}`);
+        setUserName()
+      } else {
+        const body = await response.json();
+        alert(body.msg);
+      }
+    }
+  }
+
   return (
     <main>
       <div className="create-user-box">
@@ -25,7 +49,7 @@ export function CreateUser() {
                     </div>
                 </div>
                 <div>
-                    <button className="create-user-button" type="button" onClick={() => createUser()}>Login</button>
+                    <button className="create-user-button" type="button" onClick={() => createUser()}>Create User</button>
                 </div>
             </form>
       </div>

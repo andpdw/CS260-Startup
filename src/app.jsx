@@ -34,9 +34,9 @@ export default function App() {
                             {(authState === AuthState.Authenticated || authState === AuthState.Admin) && (
                                 <li><NavLink className="nav-bar" to="database">Entry Database</NavLink></li>
                             )}
-                            {(authState === AuthState.Authenticated || authState === AuthState.Admin) && (
+                            {/*{(authState === AuthState.Authenticated || authState === AuthState.Admin) && (
                                 <li><NavLink className="nav-bar" to="camera">Live Camera</NavLink></li>
-                            )}
+                            )}*/}
                         </ul>
                     </nav>
                 </header>

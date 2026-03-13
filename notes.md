@@ -75,3 +75,11 @@ Setting up Vite and React was pretty simple. I had a bit of trouble because of c
 ## React Part 2: Reactivity
 
 Added a lot of functionality, and tried to set it up so that for the future funtions are pretty easy to drop into place when working with websockets and so on. Should be all functional for now
+
+## Service
+
+I ended up having to rework a lot of my functions that I used to get the data because I didn't set them up in a way that fetch would work with. One big example of this was with my database which originally was defining and calling the function to update the data from the same file as the react commponent was in. This meant that it was hard to update the table when new data was added. I ended up moving the functions to the database.jsx file and passing the data in as a parameter for the function.
+
+Another big update was adding a Admin AuthState. Doing this allowed for admin users to have the ability to create other accounts while standard users could not.
+
+I ended up removing the camera page for now, because it was too much to do in the time I had. The page is still there just hidden so I can get that set up later.

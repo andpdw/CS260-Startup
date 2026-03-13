@@ -109,12 +109,18 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - I did complete this part of the deliverable.
+- [x] **Static middleware for frontend** - I did complete this part of the deliverable.
+- [x] **Calls to third party endpoints** - I did complete this part of the deliverable.
+- [x] **Backend service endpoints** - I did complete this part of the deliverable.
+- [x] **Frontend calls service endpoints** - I did complete this part of the deliverable.
+- [x] **Supports registration, login, logout, and restricted endpoint** - I did complete this part of the deliverable.
+- Notes:
+    I got the backend services all set up. The frontend uses endpoints to create users, login, logout, add data to databse, as well as send messages. While doing those it uses middleware to confrim that the user is authorized to have access using cookies.
+
+    I got the 3rd party API to work to get the weather data at the bottom of the page. At somepoint I want to get it set up to get a live video feed, but I didn't have enough time to implement that for today. Because of this I removed the camera navigation link as well as got rid of the video element when the page is displayed. It was replaced with a basic this page is down message.
+
+    For the create user, I don't want this to just be a page that anyone can create a account for and have access, it is meant to be for our roomates. Because of this I moved the create user to a different page, and to access the person logged in needs admin rights. When a admin user logs in it will show the tab, as well as allowing them to make other people's accounts. When a normal user is logged in it doesn't show the create user page, and if someone navigates to the page and tries to make an account it tells them they are unauthorized.
 
 ## 🚀 DB deliverable
 

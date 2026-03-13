@@ -27,7 +27,7 @@ export function Message({authState}) {
         setM0, setM1, setM2, setM3, setM4, setM5, setM6, setM7, setM8, setM9
     ];
 
-    async function sendMessage(name, message) {
+    async function sendMessage(name, message, clearBox) {
         const newMessage = {name: name, message: message};
 
         await fetch("/api/message", {
@@ -36,7 +36,10 @@ export function Message({authState}) {
             body: JSON.stringify(newMessage),
         });
         
-        setText("");
+        if(clearBox) {
+            setText("");
+        }
+
         getMessages();
     }
 
@@ -58,7 +61,7 @@ export function Message({authState}) {
 
     React.useEffect(() => { 
         getMessages();
-        const intervalId = setInterval(() => sendMessage("Server", "This is an automated message... For now"), 10000);
+        const intervalId = setInterval(() => sendMessage("Server", "This is an automated message... For now", false), 10000);
         return () => clearInterval(intervalId);
     }, [])
 
@@ -134,7 +137,7 @@ export function Message({authState}) {
                         <textarea className="text-input" placeholder="Type message here" value={messageText} onChange={(e) => setText(e.target.value)}></textarea>
                     </div>
                     <div id="send-button">
-                        <button type="button" onClick={() => sendMessage(username, messageText)}>Send Button</button>
+                        <button type="button" onClick={() => sendMessage(username, messageText, true)}>Send Button</button>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,6 @@
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
@@ -5,6 +8,7 @@ const uuid = require('uuid');
 const app = express();
 
 const authCookieName = "Token";
+const apiKey = process.env.WEATHERSTACK_API_KEY;
 
 
 async function setPasswords(users) {
@@ -175,7 +179,6 @@ apiRouter.post("/database", verifyAuth, (req, res) => {
 })
 
 apiRouter.get("/weather", async (_req, res) => {
-    const apiKey = process.env.WEATHERSTACK_API_KEY;
 
     if (!apiKey) {
         return res.status(500).send({ msg: "Missing WEATHERSTACK_API_KEY" });

@@ -18,7 +18,9 @@ export function Authenticated({userName, onAuthChange}) {
     return (
         <>
             <h2>Welcome {userName}!</h2>
-            <button className="logout-button" onClick={() => onAuthChange(userName, AuthState.Unauthenticated)}>
+            <button className="logout-button" onClick={() => {
+                onAuthChange(userName, AuthState.Unauthenticated)
+                logoutUser()}}>
                 Logout
             </button>
         </>

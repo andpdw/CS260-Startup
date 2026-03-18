@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require("./database.js");
 
 const authCookieName = "Token";
 const apiKey = process.env.WEATHERSTACK_API_KEY;
@@ -71,6 +72,7 @@ apiRouter.post("/auth/login", async (req, res) => {
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
             user.token = uuid.v4();
+            await DB.updateUser(user);
             setAuthCookie(res, user.token, user.admin);
             res.send({username: user.username, admin: user.admin});
             return;
@@ -92,7 +94,7 @@ apiRouter.post("/auth/create", verifyAuth, async (req, res) => {
 apiRouter.delete("/auth/logout", async (req, res) => {
     const user = await findUser("token", req.cookies[authCookieName]);
     if (user) {
-        delete user.token;
+        await DB.updateUserRemoveAuth(user);
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
@@ -101,7 +103,11 @@ apiRouter.delete("/auth/logout", async (req, res) => {
 async function findUser(field, value) {
     if (!value) return null;
 
-    return users.find((u) => u[field] === value);
+    if (field === "token") {
+        return DB.getUserByToken(value);
+    }
+
+    return DB.getUser(value);
 }
 
 async function createUser(username, password) {
@@ -111,7 +117,7 @@ async function createUser(username, password) {
         password: passwordHash,
     };
 
-    users.push(user);
+    await DB.addUser(user);
 
     return user;
 }

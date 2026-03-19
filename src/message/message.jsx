@@ -27,8 +27,9 @@ export function Message({authState}) {
         setM0, setM1, setM2, setM3, setM4, setM5, setM6, setM7, setM8, setM9
     ];
 
-    async function sendMessage(name, message, clearBox) {
-        const newMessage = {name: name, message: message};
+    async function sendMessage(name, message) {
+        const currentTime = new Date();
+        const newMessage = {name: name, message: message, time: currentTime.toISOString()};
 
         await fetch("/api/message", {
             method: "POST",
@@ -36,9 +37,7 @@ export function Message({authState}) {
             body: JSON.stringify(newMessage),
         });
         
-        if(clearBox) {
-            setText("");
-        }
+        setText("");
 
         getMessages();
     }
@@ -137,7 +136,7 @@ export function Message({authState}) {
                         <textarea className="text-input" placeholder="Type message here" value={messageText} onChange={(e) => setText(e.target.value)}></textarea>
                     </div>
                     <div id="send-button">
-                        <button type="button" onClick={() => sendMessage(username, messageText, true)}>Send Button</button>
+                        <button type="button" onClick={() => sendMessage(username, messageText)}>Send Button</button>
                     </div>
                 </div>
             </div>

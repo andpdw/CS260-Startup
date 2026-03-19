@@ -140,9 +140,8 @@ function setAuthCookie(res, authToken, admin) {
     }
 }
 
-function updateMessages(newMessage) {
-    messages.unshift(newMessage);
-    return messages;
+async function sendMessage(newMessage) {
+    await DB.sendMessage(newMessage);
 }
 
 function updateDatabase(entry) {
@@ -151,20 +150,12 @@ function updateDatabase(entry) {
 }
 
 apiRouter.get("/message", verifyAuth, (_req, res) => {
-    if (messages.length > 10) {
-        res.send(messages.slice(0, 10));
-    } else {
-        res.send(messages);
-    }
+    res.send(DB.getMessages());
 })
 
 apiRouter.post("/message", verifyAuth, (req, res) => {
-    messages = updateMessages(req.body);
-    if (messages.length > 10) {
-        res.send(messages.slice(0, 10));
-    } else {
-        res.send(messages);
-    }
+    sendMessage(req.body);
+    res.status(201);
 })
 
 apiRouter.get("/database", verifyAuth, (_req, res) => {

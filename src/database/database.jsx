@@ -28,6 +28,8 @@ export function Database() {
             const result = await response.json();
             setData(result);
         }
+
+        getData();
     }
 
     async function getData() {
@@ -38,6 +40,10 @@ export function Database() {
             setData(result);
         }
     }
+
+    React.useEffect(() => {
+        getData();
+    }, []);
 
     return (
     <main>

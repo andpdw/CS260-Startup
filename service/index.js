@@ -11,13 +11,6 @@ const DB = require("./database.js");
 const authCookieName = "Token";
 const apiKey = process.env.WEATHERSTACK_API_KEY;
 
-let database = [
-    {date:"01/25/26", time:"5:32", name:"Andrew", state:"Leaving", guests:"No"},
-    {date:"01/25/26", time:"5:39", name:"Jacob", state:"Entering", guests:"No"},
-    {date:"01/25/26", time:"5:59", name:"Clayton", state:"Leaving", guests:"No"},
-    {date:"01/25/26", time:"6:45", name:"Andrew", state:"Entering", guests:"Yes"},
-];
-
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.use(express.json());

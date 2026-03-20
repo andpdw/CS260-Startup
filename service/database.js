@@ -6,6 +6,7 @@ const client = new MongoClient(url);
 const db = client.db("startupDB");
 const userCollection = db.collection("user");
 const messageCollection = db.collection("message");
+const entryCollection = db.collection("entry");
 
 (async function testConnection() {
     try {
@@ -46,6 +47,15 @@ function getMessages() {
     return messages.toArray();
 }
 
+async function logEntry(entry) {
+    await entryCollection.insertOne(entry);
+}
+
+function getEntry() {
+    const entry = entryCollection.find().sort({ time: -1 }).limit(10);
+    return entry.toArray();
+}
+
 module.exports = {
     getUser,
     getUserByToken,
@@ -54,4 +64,6 @@ module.exports = {
     updateUserRemoveAuth,
     sendMessage,
     getMessages,
+    logEntry,
+    getEntry,
 };

@@ -116,9 +116,8 @@ async function sendMessage(newMessage) {
     await DB.sendMessage(newMessage);
 }
 
-function updateDatabase(entry) {
-    database.unshift(entry);
-    return database;
+async function updateDatabase(entry) {
+    await DB.logEntry(entry);
 }
 
 apiRouter.get("/message", verifyAuth, async (_req, res) => {
@@ -131,21 +130,14 @@ apiRouter.post("/message", verifyAuth, (req, res) => {
     res.status(201).send();
 })
 
-apiRouter.get("/database", verifyAuth, (_req, res) => {
-    if (database.length > 20) {
-        res.send(database.slice(0, 20));
-    } else {
-        res.send(database);
-    }
+apiRouter.get("/database", verifyAuth, async (_req, res) => {
+    const entry = await DB.getEntry();
+    res.send(entry);
 })
 
 apiRouter.post("/database", verifyAuth, (req, res) => {
-    database = updateDatabase(req.body);
-    if (database.length > 20) {
-        res.send(database.slice(0, 20));
-    } else {
-        res.send(database);
-    }
+    updateDatabase(req.body);
+    res.status(201).send();
 })
 
 apiRouter.get("/weather", async (_req, res) => {

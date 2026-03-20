@@ -52,7 +52,7 @@ async function logEntry(entry) {
 }
 
 function getEntry() {
-    const entry = entryCollection.find().sort({ logTime: -1 }).limit(10);
+    const entry = entryCollection.find().sort({ sortTime: -1 }).limit(10);
     return entry.toArray();
 }
 

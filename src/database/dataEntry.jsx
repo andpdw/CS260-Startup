@@ -1,6 +1,6 @@
 import React from "react";
 
-export function newEntry(date, time, name, state, guests, setFunctions, logTime, addEntry) {
+export function newEntry(date, time, name, state, guests, setFunctions, addEntry) {
 
     if (date === "" || time === "" || name === "" || state === "") {
         return false;
@@ -14,9 +14,10 @@ export function newEntry(date, time, name, state, guests, setFunctions, logTime,
         }
 
         const [year, month, day] = date.split("-");
+        const sortTime = date+"-"+time;
         date = month+"/"+day+"/"+year.slice(-2);
 
-        addEntry({date: date, time: time, name: name, state: state, guests: sGuests, logTime: logTime});
+        addEntry({date: date, time: time, name: name, state: state, guests: sGuests, sortTime: sortTime});
         
         for (let i = 0; i < 4; i++) {
             setFunctions[i]("");

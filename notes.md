@@ -83,3 +83,13 @@ I ended up having to rework a lot of my functions that I used to get the data be
 Another big update was adding a Admin AuthState. Doing this allowed for admin users to have the ability to create other accounts while standard users could not.
 
 I ended up removing the camera page for now, because it was too much to do in the time I had. The page is still there just hidden so I can get that set up later.
+
+## DB
+
+Pretty simple drop in for a lot of the functions. Made the functions in the database.js file then used them in the index.js. Anything that requried special changes below:
+
+Messages:
+For my messages I had to add a field for when it was sent, then this was used to sort the messages so it only returned the most recent messages.
+
+Database:
+Same issue as messages. I had to add a way to sort it. At first I did it by when it was added but then realized that if they put in an entry for way before it would still sort by when it as added. I ended up adding the year and time data into one string then storing it as a variable to sort by. This way it was all based on when the entry happened not when it was added.

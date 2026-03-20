@@ -126,8 +126,14 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - I did complete this part of the deliverable.
+- [x] **Stores credentials in MongoDB** - I did complete this part of the deliverable.
+- Notes:
+    Added all the server DB functionality. Most functions were just making a function in database.js for mongo then importing it and using it in the index.js file.
+
+    There are 3 different databases, one for users, one for messages, and one for the entry database. 
+
+    Honestly pretty simple because of how my code was set up to it was pretty easy to do. One change I did make is my send message and make entry function used to return the database/message list. I changed it so they just return a status code then in the functions in the jsx file it calls the getmessage/getentry function as a part of the adding function so it is clearer what it is doing.
 
 ## 🚀 WebSocket deliverable
 

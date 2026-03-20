@@ -19,26 +19,23 @@ export function Message({authState}) {
     const [m8, setM8] = React.useState({name: "", message: ""});
     const [m9, setM9] = React.useState({name: "", message: ""});
 
-    const messages = [
-        m0, m1, m2, m3, m4, m5, m6, m7, m8, m9
-    ];
-
     const setMessagesFuncs = [
         setM0, setM1, setM2, setM3, setM4, setM5, setM6, setM7, setM8, setM9
     ];
 
+    React.useEffect(() => {
+        getMessages();
+    }, []);
+
     async function sendMessage(name, message) {
         const currentTime = new Date();
         const newMessage = {name: name, message: message, time: currentTime.toISOString()};
-
         await fetch("/api/message", {
             method: "POST",
             headers: {"content-type": "application/json" },
             body: JSON.stringify(newMessage),
         });
-        
         setText("");
-
         getMessages();
     }
 
@@ -57,12 +54,6 @@ export function Message({authState}) {
 
         }
     }
-
-    React.useEffect(() => { 
-        getMessages();
-        const intervalId = setInterval(() => sendMessage("Server", "This is an automated message... For now", false), 10000);
-        return () => clearInterval(intervalId);
-    }, [])
 
     return (
         <main>

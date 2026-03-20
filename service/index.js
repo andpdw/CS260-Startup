@@ -11,40 +11,12 @@ const DB = require("./database.js");
 const authCookieName = "Token";
 const apiKey = process.env.WEATHERSTACK_API_KEY;
 
-
-async function setPasswords(users) {
-    const adminPasswordHash = await bcrypt.hash("adminpass", 10);
-    const passwordHash = await bcrypt.hash("pass", 10);
-
-    users[0].password = adminPasswordHash;
-    users[1].password = passwordHash;
-}
-
-let users = [
-    { username: "admin", password: "", admin: true},
-    { username: "normal", password: "", admin: false}];
-
-let messages = [
-    {name: "Clayton", message: "And I just got back"},
-    {name: "Andrew", message: "I can set up your password in an hour"},
-    {name: "Jacob", message: "This is a real message"},
-    {name: "Jeffery", message: "I will be gone for the next 3 hours."},
-    {name: "Carter", message: "I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen"},
-    {name: "Clayton", message: "I will be gone for the next 2 hours."},
-    {name: "Clayton", message: "And I just got back"},
-    {name: "Andrew", message: "I can set up your password in an hour"},
-    {name: "Carter", message: "I just need to rant for a really long time so I can see how the screen handle text that will wrap around the edge of the screen"},
-    {name: "Clayton", message: "I will be gone for the next 2 hours."}
-];
-
 let database = [
     {date:"01/25/26", time:"5:32", name:"Andrew", state:"Leaving", guests:"No"},
     {date:"01/25/26", time:"5:39", name:"Jacob", state:"Entering", guests:"No"},
     {date:"01/25/26", time:"5:59", name:"Clayton", state:"Leaving", guests:"No"},
     {date:"01/25/26", time:"6:45", name:"Andrew", state:"Entering", guests:"Yes"},
 ];
-
-setPasswords(users);
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -149,13 +121,14 @@ function updateDatabase(entry) {
     return database;
 }
 
-apiRouter.get("/message", verifyAuth, (_req, res) => {
-    res.send(DB.getMessages());
+apiRouter.get("/message", verifyAuth, async (_req, res) => {
+    const messages = await DB.getMessages();
+    res.send(messages);
 })
 
 apiRouter.post("/message", verifyAuth, (req, res) => {
     sendMessage(req.body);
-    res.status(201);
+    res.status(201).send();
 })
 
 apiRouter.get("/database", verifyAuth, (_req, res) => {

@@ -1,5 +1,7 @@
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+const config = require("./api.json");
+
+const apiKey = config.WEATHERSTACK_API_KEY;
 
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
@@ -9,7 +11,6 @@ const app = express();
 const DB = require("./database.js");
 
 const authCookieName = "Token";
-const apiKey = process.env.WEATHERSTACK_API_KEY;
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 

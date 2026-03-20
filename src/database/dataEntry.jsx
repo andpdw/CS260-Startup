@@ -1,6 +1,6 @@
 import React from "react";
 
-export function newEntry(date, time, name, state, guests, setFunctions, addEntry) {
+export function newEntry(date, time, name, state, guests, setFunctions, logTime, addEntry) {
 
     if (date === "" || time === "" || name === "" || state === "") {
         return false;
@@ -16,7 +16,7 @@ export function newEntry(date, time, name, state, guests, setFunctions, addEntry
         const [year, month, day] = date.split("-");
         date = month+"/"+day+"/"+year.slice(-2);
 
-        addEntry({date: date, time: time, name: name, state: state, guests: sGuests});
+        addEntry({date: date, time: time, name: name, state: state, guests: sGuests, logTime: logTime});
         
         for (let i = 0; i < 4; i++) {
             setFunctions[i]("");

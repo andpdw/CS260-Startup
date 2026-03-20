@@ -82,7 +82,8 @@ export function Database() {
                     <div id="submit-button">
                         <button type="button" 
                         onClick={() => {
-                            const allData = newEntry(date, time, name, state, guests, setFunctions, addEntry);
+                            const currentTime = new Date();
+                            const allData = newEntry(date, time, name, state, guests, setFunctions, currentTime.toISOString, addEntry);
                             
                             if (!allData) {
                                 alert("Please fill out all fields before submitting");

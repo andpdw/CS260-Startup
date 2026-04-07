@@ -3,6 +3,7 @@ import './message.css'
 
 import { AuthState } from '../login/authState';
 import { MessageBox } from './messageBox';
+import { MessageEvent, MessageNotifier } from './messageNotifier';
 
 export function Message({authState}) {
     const [username, setUserName] = React.useState(localStorage.getItem("username"));
@@ -37,6 +38,7 @@ export function Message({authState}) {
         });
         setText("");
         getMessages();
+        MessageNotifier.broadcastEvent(username, MessageEvent.message, "Message Sent");
     }
 
     async function getMessages() {

@@ -3,8 +3,17 @@ const { WebSocketServer, WebSocket } = require("ws");
 function peerProxy(httpServer) {
     const socketServer = new WebSocketServer({ server: httpServer });
 
-    socketServer.os("connection", (socket) => {
+    socketServer.on("connection", (socket) => {
         socket.isAlive = true;
+
+        socket.on("message", function message(data) {
+            console.log("Get a message");
+            socketServer.clients.forEach((client) => {
+                if (client !== socket && client.readyState === WebSocket.OPEN) {
+                    client.send(data);
+                }
+            });
+        });
 
         socket.on("pong", () => {
             socket.isAlive = true;

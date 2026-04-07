@@ -12,21 +12,12 @@ class EventMessage {
 }
 
 class MessageEventNotifier {
-    events = [];
     handlers = [];
 
     constructor() {
         let port = window.location.port;
         const protocol = window.location.protocol === "http:" ? "ws" : "wss";
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
-
-        this.socket.onopen = (event) => {
-            this.receiveEvent(new EventMessage("Startup", MessageEvent.System, { msg: "connected" }));
-        };
-
-        this.socket.onclose = (event) => {
-            this.receiveEvent(new EventMessage("Startup", MessageEvent.System, { msg: "disconnected" }));
-        };
 
         this.socket.onerror = (err) => {
             console.error("WebSoecket error: ", err);
@@ -36,7 +27,9 @@ class MessageEventNotifier {
             try {
                 const event = JSON.parse(await msg.data.text());
                 this.receiveEvent(event);
-            } catch {}
+            } catch {
+                console.log("Error with WebSocket");
+            }
         };
     }
 
@@ -59,14 +52,10 @@ class MessageEventNotifier {
     }
 
     receiveEvent(event) {
-        this.events.push(event);
-
-        this.events.forEach((e) => {
-            this.handlers.forEach((handler) => {
-                handler();
-            });
+        this.handlers.forEach((handler) => {
+            handler();
         });
-    }
+}
 }
 
 const MessageNotifier = new MessageEventNotifier();

@@ -12,6 +12,9 @@ class EventMessage {
 }
 
 class MessageEventNotifier {
+    events = [];
+    handlers = [];
+
     constructor() {
         /*let port = window.location.port;*/
         let port = 4000;
@@ -20,10 +23,19 @@ class MessageEventNotifier {
 
         this.socket.onopen = (event) => {
             this.receiveEvent(new EventMessage("Startup", MessageEvent.System, { msg: "connected" }));
+            console.log("Opening ws");
         };
 
         this.socket.onclose = (event) => {
-        }
+            console.log("CLosing ws");
+            this.receiveEvent(new EventMessage("Startup", MessageEvent.System, { msg: "disconnected" }));
+        };
+        this.socket.onmessage = async (msg) => {
+            try {
+                const event = JSON.parse(await msg.data.text());
+                this.receiveEvent(event);
+            } catch {}
+        };
     }
 
     broadcastEvent(from, type, value) {
@@ -31,7 +43,16 @@ class MessageEventNotifier {
         this.socket.send(JSON.stringify(event));
     }
 
+    addHandler(handler) {
+        this.handlers.push(handler);
+    }
+
+    removeHandler(handler) {
+        this.handlers.filter((h) => h !== handler);
+    }
+
     receiveEvent(event) {
+        console.log("Revieved Message");
         this.events.push(event);
 
         this.events.forEach((e) => {

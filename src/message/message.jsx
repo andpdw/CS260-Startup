@@ -38,7 +38,7 @@ export function Message({authState}) {
         });
         setText("");
         getMessages();
-        MessageNotifier.broadcastEvent(username, MessageEvent.message, "Message Sent");
+        MessageNotifier.broadcastEvent(username, MessageEvent.Message, "Message Sent");
     }
 
     async function getMessages() {

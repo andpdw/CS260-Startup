@@ -5,9 +5,9 @@ function peerProxy(httpServer) {
 
     socketServer.on("connection", (socket) => {
         socket.isAlive = true;
+        console.log("New device connected");
 
         socket.on("message", function message(data) {
-            console.log("Get a message");
             socketServer.clients.forEach((client) => {
                 if (client !== socket && client.readyState === WebSocket.OPEN) {
                     client.send(data);

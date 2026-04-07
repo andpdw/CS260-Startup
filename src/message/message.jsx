@@ -28,6 +28,18 @@ export function Message({authState}) {
         getMessages();
     }, []);
 
+    React.useEffect(() => {
+        MessageNotifier.addHandler(handleMessageEvent);
+
+        return () => {
+            MessageNotifier.removeHandler(handleMessageEvent);
+        };
+    });
+
+    function handleMessageEvent() {
+        getMessages();
+    }
+
     async function sendMessage(name, message) {
         const currentTime = new Date();
         const newMessage = {name: name, message: message, time: currentTime.toISOString()};

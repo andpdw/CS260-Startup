@@ -16,18 +16,15 @@ class MessageEventNotifier {
     handlers = [];
 
     constructor() {
-        /*let port = window.location.port;*/
-        let port = 4000;
+        let port = window.location.port;
         const protocol = window.location.protocol === "http:" ? "ws" : "wss";
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
 
         this.socket.onopen = (event) => {
             this.receiveEvent(new EventMessage("Startup", MessageEvent.System, { msg: "connected" }));
-            console.log("Opening ws");
         };
 
         this.socket.onclose = (event) => {
-            console.log("CLosing ws");
             this.receiveEvent(new EventMessage("Startup", MessageEvent.System, { msg: "disconnected" }));
         };
         this.socket.onmessage = async (msg) => {
@@ -52,12 +49,11 @@ class MessageEventNotifier {
     }
 
     receiveEvent(event) {
-        console.log("Revieved Message");
         this.events.push(event);
 
         this.events.forEach((e) => {
             this.handlers.forEach((handler) => {
-                handler(e);
+                handler();
             });
         });
     }

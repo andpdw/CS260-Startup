@@ -139,8 +139,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - I did complete this part of the deliverable.
+- [x] **Frontend makes WebSocket connection** - I did complete this part of the deliverable.
+- [x] **Data sent over WebSocket connection** - I did complete this part of the deliverable.
+- [x] **WebSocket data displayed** - I did complete this part of the deliverable.
+- [x] **Application is fully functional** - I did complete this part of the deliverable.
+- Notes:
+    Took me a bit to understand how websocket works and how everything is connected and how to configure it all. Had some issues with the port it was listening on and configuring that. Also had some issues while testing with using the same account which would cause one to become unathenditacted. Check notes for more information.
+
+    I set it up so that when a message it sent it is first sent to the database and saved there. Then after it is saved it updates the page and sends a websocket message to other users to refresh their page and get messages from the database. I did this so that the messages will always be in sync with the database, and it doesn't somehome get out of sync.

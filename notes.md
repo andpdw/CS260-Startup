@@ -93,3 +93,10 @@ For my messages I had to add a field for when it was sent, then this was used to
 
 Database:
 Same issue as messages. I had to add a way to sort it. At first I did it by when it was added but then realized that if they put in an entry for way before it would still sort by when it as added. I ended up adding the year and time data into one string then storing it as a variable to sort by. This way it was all based on when the entry happened not when it was added.
+
+## WebSocket
+
+I forgot to update the vite.config.js so I wasn't able to connect to WebSocket on my local computer, once I got it updated I was able to get it to work.
+I was also having an issue where I would login with the same account on both tabs, meaning that the second would reset the valid cookes and tokens meaning that the first would give unathenticated errors and that took me a while to relize what was going on. I then was able to get that fixed and just used 2 different accounts.
+
+I had to figure out how to call the function to get messages when a websocket message comes in, that took me a bit to understand but I finally got it.

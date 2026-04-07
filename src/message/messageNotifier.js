@@ -27,6 +27,11 @@ class MessageEventNotifier {
         this.socket.onclose = (event) => {
             this.receiveEvent(new EventMessage("Startup", MessageEvent.System, { msg: "disconnected" }));
         };
+
+        this.socket.onerror = (err) => {
+            console.error("WebSoecket error: ", err);
+        };
+
         this.socket.onmessage = async (msg) => {
             try {
                 const event = JSON.parse(await msg.data.text());
@@ -37,7 +42,12 @@ class MessageEventNotifier {
 
     broadcastEvent(from, type, value) {
         const event = new EventMessage(from, type, value);
-        this.socket.send(JSON.stringify(event));
+
+        if (this.socket.readyState === WebSocket.OPEN) {
+            this.socket.send(JSON.stringify(event));
+        } else {
+            console.warn("WebSocket not open and can't send message");
+        }
     }
 
     addHandler(handler) {
@@ -45,7 +55,7 @@ class MessageEventNotifier {
     }
 
     removeHandler(handler) {
-        this.handlers.filter((h) => h !== handler);
+        this.handlers = this.handlers.filter((h) => h !== handler);
     }
 
     receiveEvent(event) {

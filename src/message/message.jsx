@@ -34,7 +34,7 @@ export function Message({authState}) {
         return () => {
             MessageNotifier.removeHandler(handleMessageEvent);
         };
-    });
+    }, []);
 
     function handleMessageEvent() {
         getMessages();
